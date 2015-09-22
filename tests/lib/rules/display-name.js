@@ -22,6 +22,7 @@ ruleTester.run('display-name', rule, {
 
   valid: [{
     code: [
+      'var React = require(\'react\');',
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
@@ -34,6 +35,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'class Hello extends React.Component {',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -70,6 +72,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'class Hello extends React.Component {',
       '  static get displayName() {',
       '    return \'Hello\';',
@@ -85,6 +88,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'class Hello extends React.Component {',
       '  static displayName = \'Widget\'',
       '  render() {',
@@ -99,6 +103,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'var Hello = React.createClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -114,6 +119,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'class Hello extends React.Component {',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -138,6 +144,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
+      'var React = require(\'react\');',
       'var Hello;',
       'Hello = React.createClass({',
       '  render: function() {',
@@ -153,6 +160,7 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'var React = require(\'react\');',
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
@@ -173,6 +181,7 @@ ruleTester.run('display-name', rule, {
 
   invalid: [{
     code: [
+      'var React = require(\'react\');',
       'var Hello = React.createClass({',
       '  render: function() {',
       '    return React.createElement("div", {}, "text content");',
@@ -187,6 +196,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
+      'var React = require(\'react\');',
       'var Hello = React.createClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -201,6 +211,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
+      'var React = require(\'react\');',
       'class Hello extends React.Component {',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -216,6 +227,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
+      'var React = require(\'react\');',
       'function HelloComponent() {',
       '  return React.createClass({',
       '    render: function() {',
@@ -232,21 +244,6 @@ ruleTester.run('display-name', rule, {
       classes: true,
       jsx: true
     },
-    errors: [{
-      message: 'Component definition is missing display name'
-    }]
-  }, {
-    code: [
-      'export default class {',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }],
     errors: [{
       message: 'Component definition is missing display name'
     }]
